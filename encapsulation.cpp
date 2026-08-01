@@ -39,5 +39,5 @@ int main() {
 
     cout << "Balance: " << account.getBalance() << endl;
 
-    // account.balance = 100000;   // ❌ Error: balance is private
+    // account.balance = 100000;   //  Error: balance is private
 }
