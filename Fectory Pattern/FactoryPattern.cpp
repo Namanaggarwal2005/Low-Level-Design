@@ -20,6 +20,16 @@ class BasicBurger : public Burger{
         }
 };
 
+class BasicWheatBurger : public Burger{
+    public:
+        BasicWheatBurger(){
+            cout<<"This is a basic wheat burger";
+        }
+        void prepare(){
+            cout<<"A basic burger is being prepared";
+        }
+};
+
 class StandardBurger : public Burger{
     public:
         StandardBurger(){
@@ -29,6 +39,16 @@ class StandardBurger : public Burger{
             cout<<"A Standard burger is being prepared";
         }
 };
+class StandardWheatBurger : public Burger{
+    public:
+        StandardWheatBurger(){
+            cout<<"This is a standard burger";
+        }
+        void prepare(){
+            cout<<"A Standard burger is being prepared";
+        }
+};
+
 
 class PremiumBurger : public Burger{
     public:
@@ -40,8 +60,25 @@ class PremiumBurger : public Burger{
         }
 };
 
+
+class PremiumWheatBurger : public Burger{
+    public:
+        PremiumWheatBurger(){
+            cout<<"This is a premium burger";
+        }
+        void prepare(){
+            cout<<"A Premium burger is being prepared";
+        }
+};
+
+
 class BurgerFactory{
     Burger* myBurger;
+    public:
+    virtual Burger* createBurger(string s) = 0;
+};
+
+class KingBurgerFactory : public BurgerFactory{
     public:
     Burger* createBurger(string type){
         transform(type.begin(), type.end(), type.begin(), ::toupper);
@@ -56,9 +93,24 @@ class BurgerFactory{
     }
 };
 
+class SinghBurgerFactory : public BurgerFactory{
+    public:
+    Burger* createBurger(string type){
+        transform(type.begin(), type.end(), type.begin(), ::toupper);
+        if(type  == "BASIC"){
+            return new BasicWheatBurger();
+        }else if(type == "STANDARD"){
+            return new StandardWheatBurger();
+        }else if(type == "PREMIUM"){
+            return new PremiumWheatBurger();
+        }
+        return new BasicWheatBurger();
+    }
+};
+
+
+
 int main(){
-    BurgerFactory* factory = new BurgerFactory();
-    Burger* myBurger = factory->createBurger("basic");
-    myBurger->prepare();
+    
     return 0;
 }
