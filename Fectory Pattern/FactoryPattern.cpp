@@ -89,7 +89,7 @@ class KingBurgerFactory : public BurgerFactory{
         }else if(type == "PREMIUM"){
             return new PremiumBurger();
         }
-        return new BasicBurger();
+        return NULL;
     }
 };
 
@@ -104,7 +104,7 @@ class SinghBurgerFactory : public BurgerFactory{
         }else if(type == "PREMIUM"){
             return new PremiumWheatBurger();
         }
-        return new BasicWheatBurger();
+        return NULL;
     }
 };
 
